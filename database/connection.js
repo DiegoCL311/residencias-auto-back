@@ -16,5 +16,3 @@ try {
 module.exports = {
     getConn
 };
-
-export { sql };
