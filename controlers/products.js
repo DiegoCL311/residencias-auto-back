@@ -1,5 +1,11 @@
 const rutaGet = function (req, res) {
-    res.send("hello world");
+    res.send("Respuesta de rutaGet");
   }
 
-module.exports = { rutaGet };
+
+const rutaPost = function (req, res) {
+    res.send("Respuesta de rutaPost");
+    }
+
+
+module.exports = { rutaGet, rutaPost };

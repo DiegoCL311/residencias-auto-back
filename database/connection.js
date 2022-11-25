@@ -1,9 +1,20 @@
-const sql = require('mssql')
-const config = require('./config.js')
+const sql = require("mssql");
+const config = require("./config.js");
 
-const pool = new sql.ConnectionPool(config);
-const poolConnect = pool.connect();
+const getConn = async () => {
+try {
+    
+    const pool = await sql.connect(config);
+    return pool;
+
+} catch (error) {
+    console.log(error);
+}
+
+}
 
 module.exports = {
-    poolConnect
-}
+    getConn
+};
+
+export { sql };

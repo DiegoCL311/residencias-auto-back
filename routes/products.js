@@ -2,8 +2,9 @@ const { Router } = require("express");
 const controlers = require("../controlers/products");
 const app = Router();
 
-// respond with "hello world" when a GET request is made to the homepage
+// Rutas de productos
 app.get("/producto", controlers.rutaGet);
+app.post("/producto", controlers.rutaPost);
 
 
 module.exports = app;
