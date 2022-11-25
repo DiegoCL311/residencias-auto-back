@@ -10,8 +10,8 @@ app.post("/reportePreliminar", function (req, res) {
   res.send("Respuesta post reportePreliminar");
 });
 
-app.update("/reportePreliminar", function (req, res) {
-  res.send("Respuesta update reportePreliminar");
-});
+//app.update("/reportePreliminar", function (req, res) {
+//  res.send("Respuesta update reportePreliminar");
+//});
 
 module.exports = app;
