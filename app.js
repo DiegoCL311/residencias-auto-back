@@ -1,8 +1,11 @@
 const express = require("express");
 const connection = require("./database/connection.js");
 const conf = require("./config.js");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
+app.use(express.json())
 
 //Rutas
 const products = require("./routes/products");

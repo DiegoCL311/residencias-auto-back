@@ -1,17 +1,10 @@
 const { Router } = require("express");
+const controlers = require("../controlers/reportePreliminar.js");
 const app = Router();
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get("/reportePreliminar", function (req, res) {
-  res.send("Respuesta get reportePreliminar1");
-});
+// Rutas de productos
+app.get("/reportePreliminar", controlers.GetReadReportes);
+app.post("/reportePreliminar", controlers.PostCreateReporte);
 
-app.post("/reportePreliminar", function (req, res) {
-  res.send("Respuesta post reportePreliminar");
-});
-
-//app.update("/reportePreliminar", function (req, res) {
-//  res.send("Respuesta update reportePreliminar");
-//});
 
 module.exports = app;
