@@ -41,9 +41,7 @@ const PostCreateReporte = async function (req, res) {
 
     //querys
     results = await request.query(
-      ` INSERT INTO [dbo].[PROYECTO] 
-              ([ProyectoTITULO],[ProyectoAREA],[ProyectoRealizacion],[ID_ASESOR_INTERNO],[ID_ASESOR_EXTERNO],[ID_EMPRESA])
-       VALUES (<ProyectoTITULO, nvarchar(80),> ,<ProyectoAREA, nvarchar(50),> ,<ProyectoRealizacion, nvarchar(50),>,<ID_ASESOR_INTERNO, int,> ,<ID_ASESOR_EXTERNO, int,> ,<ID_EMPRESA, int,>) `
+      `  `
     );
 
     await transaction.commit();
