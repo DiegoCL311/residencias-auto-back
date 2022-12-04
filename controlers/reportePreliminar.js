@@ -5,46 +5,52 @@ const { getConn } = require("../database/connection");
 const GetReadReportes = async function (req, res) {
   let pool = await getConn();
 
-  let result = await pool.request().query("SELECT 1");
+  let data = req.body;
+  let results;
+  let transaction;
 
-  //console.log(result);
+  try {
+    transaction = await pool.transaction();
+    await transaction.begin();
+    const request = await transaction.request();
 
-  res.send(result);
+    //querys
+    results = await request.query("SELECT * FROM REPORTE_PRELIMINAR");
+
+    await transaction.commit();
+  } catch (err) {
+    await transaction.rollback();
+    console.log(err);
+    throw err;
+  }
+  res.send(results);
 };
 
 const PostCreateReporte = async function (req, res) {
   let pool = await getConn();
 
-  //console.log(req.body);
   let data = req.body;
-  let results
+  let results;
   let transaction;
   try {
-      //console.log("entrooooo, pool", pool);
-      transaction = await pool.transaction();
-      //console.log("transaction creada", transaction);
+    transaction = await pool.transaction();
+    await transaction.begin();
+    const request = await transaction.request();
 
-      await transaction.begin();
-      //console.log("transaction iniciada", transaction);
+    console.log(data);
 
-      const request = await transaction.request();
-      //console.log("request creada", request);
+    //querys
+    results = await request.query(
+      ` INSERT INTO [dbo].[PROYECTO] 
+              ([ProyectoTITULO],[ProyectoAREA],[ProyectoRealizacion],[ID_ASESOR_INTERNO],[ID_ASESOR_EXTERNO],[ID_EMPRESA])
+       VALUES (<ProyectoTITULO, nvarchar(80),> ,<ProyectoAREA, nvarchar(50),> ,<ProyectoRealizacion, nvarchar(50),>,<ID_ASESOR_INTERNO, int,> ,<ID_ASESOR_EXTERNO, int,> ,<ID_EMPRESA, int,>) `
+    );
 
-
-      //querys
-      results = await request.query("SELECT 1 as Numero");
-      //console.log("query creada", transaction);
-      //console.log("resultado", result);
-
-
-
-      await transaction.commit();
-
-      //console.log("Transaction commited");
+    await transaction.commit();
   } catch (err) {
-      //await transaction.rollback();
-      console.log(err);
-      //throw err;
+    await transaction.rollback();
+    console.log(err);
+    throw err;
   }
   res.send(results);
 };

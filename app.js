@@ -12,6 +12,7 @@ const products = require("./routes/products");
 const reportePreliminar = require("./routes/reportePreliminar");
 
 
+
 //Usar rutas
 app.use(products);
 app.use(reportePreliminar);
