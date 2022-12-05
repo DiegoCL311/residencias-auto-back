@@ -8,14 +8,15 @@ app.use(cors());
 app.use(express.json())
 
 //Rutas
-const products = require("./routes/products");
+//const products = require("./routes/products");
 const reportePreliminar = require("./routes/reportePreliminar");
-
+const asesores_internos = require("./routes/asesores_internos");
 
 
 //Usar rutas
-app.use(products);
+
 app.use(reportePreliminar);
+app.use(asesores_internos);
 
 app.listen(conf.port, () => {
   console.log(`Example app listening on port ${conf.port}`);
