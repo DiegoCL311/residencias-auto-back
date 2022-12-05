@@ -11,12 +11,14 @@ app.use(express.json())
 //const products = require("./routes/products");
 const reportePreliminar = require("./routes/reportePreliminar");
 const asesores_internos = require("./routes/asesores_internos");
+const proyectos = require("./routes/proyectos");
 
 
 //Usar rutas
 
 app.use(reportePreliminar);
 app.use(asesores_internos);
+app.use(proyectos);
 
 app.listen(conf.port, () => {
   console.log(`Example app listening on port ${conf.port}`);
