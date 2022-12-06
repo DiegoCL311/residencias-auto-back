@@ -4,6 +4,7 @@ const app = Router();
 
 // Rutas de productos
 app.get("/proyectos", controlers.GetProyectos);
+app.get("/proyectos/:id", controlers.GetProyectoID);
 
 
 
